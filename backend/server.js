@@ -2,12 +2,19 @@ const express = require("express");
 const cors = require("cors");
 const { fetchGithubData } = require("./utiles/fetchGithubData");
 const { analyseRepo } = require("./utiles/analyseRepo");
+require("dotenv").config();
+
 
 const app = express();
 
 // CORS
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors());
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
 
 // API route
 app.post("/api/analyze", async (req, res) => {
@@ -24,4 +31,4 @@ app.post("/api/analyze", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(5001, () => console.log("Server running on port 5001"));

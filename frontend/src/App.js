@@ -7,7 +7,7 @@ function App() {
 
   const handleAnalyze = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/analyze", { url });
+      const res = await axios.post("http://localhost:5001/api/analyze", { url });
       setResult(res.data);
     } catch (err) {
       alert("Failed to analyze repo");
